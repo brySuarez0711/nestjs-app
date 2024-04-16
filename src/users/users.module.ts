@@ -7,10 +7,11 @@ import {
 import { UsersController } from './users.controller';
 import { UsersService } from './users.service';
 import { LoggerMiddleware } from './logger/logger.middleware';
+import { PrismaService } from 'src/prisma.service';
 
 @Module({
   controllers: [UsersController],
-  providers: [UsersService],
+  providers: [UsersService, PrismaService],
 })
 
 //implement a middleware
