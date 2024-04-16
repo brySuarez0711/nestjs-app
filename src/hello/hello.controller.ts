@@ -1,4 +1,12 @@
-import { Controller, Get, HttpCode, Req, Res } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  HttpCode,
+  Param,
+  ParseIntPipe,
+  Req,
+  Res,
+} from '@nestjs/common';
 import { Request, Response } from 'express';
 
 @Controller()
@@ -20,5 +28,10 @@ export class HelloController {
   @HttpCode(500)
   errorPage() {
     return 'error page';
+  }
+
+  @Get('/ticket/:num')
+  getNumber(@Param('num', ParseIntPipe) num: number) {
+    return num + 17;
   }
 }
